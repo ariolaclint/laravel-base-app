@@ -15,22 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
-
-Route::get("name/{myname}", "TestController@index");
-Route::get("update/{id}/{eventlogs}", "TestController@update");
-Route::get("get/{id}", "TestController@getlogs");
-Route::get("delete/{id}", "TestController@del_logs");	
-
-Route::get("animals", "TestController@myanimals");
-
 
 Route::get('/home', 'HomeController@index');
 
 
-Route::get("login", "Auth\LoginController@showLoginForm")->name('login');
-Route::post("login", "Auth\LoginController@login")->name('login');
-Route::post("logout", "Auth\LoginController@logout")->name('logout');
+Route::get("auth/login", "Auth\LoginController@showLoginForm")->name('login');
+Route::post("auth/login", "Auth\LoginController@login")->name('login');
+Route::post("auth/logout", "Auth\LoginController@logout")->name('logout');
 
 
 Route::group(['middleware' => ['superadmin'] , 'prefix' => 'auth' ], function () {

@@ -26,6 +26,8 @@ class UserController extends Controller
     	$rule =  [
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
+            'mobileno' => 'required|max:255',
+            'email' => 'required|email|max:255',
             'role' => 'required|max:255',
             'username' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
@@ -39,9 +41,10 @@ class UserController extends Controller
         }
 
         $user = new User();
-
         $user->firstname = $data['firstname'];
         $user->lastname = $data['lastname'];
+        $user->mobileno = $data['mobileno'];
+        $user->email = $data['email'];
         $user->username = $data['username'];
         $user->role = $data['role'];
         $user->active = 1;

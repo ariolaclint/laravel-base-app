@@ -1,0 +1,97 @@
+html,body{
+	background: #fff;
+	height: 100%;
+}
+body{
+	font-family: arial,sans-serif;
+	font-size:small;
+	color: #000;
+	font-weight: 50 !important;
+}
+.mycontent{
+	padding: 20px;
+}
+.navbar-default{
+	box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.2), 0 1px 8px 0 rgba(0,0,0,.12);
+}
+
+.sidebar{
+	height: calc(100% - 50px);
+	width:180px;
+	margin-top: 50px;
+	position: fixed;
+	overflow-y: auto;
+	border-right:1.1px solid #d3d3d3;
+	background: #fafafa;
+	padding-top: 5px
+}
+
+.main-content{
+	margin-top: 50px;
+	height: calc(100% - 50px);
+	float: right;
+	width: calc(100% - 180px);
+}
+.container{
+	width: 100%;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.sidemenu{
+	padding: 10px;
+	padding-left: 25px;
+	cursor: pointer;
+	color: #868686;
+}
+.sidemenu:hover{
+	background: #eee;
+}
+a:link{
+	text-decoration: none;
+}
+.sidebar .active{
+	color: #3A78E6 !important;
+	background: #C4D1E7;
+}
+
+table > thead > tr > th{
+	background: #fafafa;
+	color: #272727;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	border: 1px solid #f3f3f3 !important;
+	border-bottom: 1px solid #ddd !important;
+}
+
+table > tbody > tr > td{
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+	border: 1px solid #f3f3f3 !important;
+}
+
+.noPaddingLeftRight{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.alineHeight{
+	line-height: 3;
+}
+.paddingTop30{
+	padding-top: 30px;
+}
+.trTitle{
+	background: #fafafa;
+	text-align: right;
+}
+.detailviewheader{
+	margin-bottom: 5px;
+	text-align: center;
+	padding: 7px;
+	font-weight: 600;
+	color: #1d5f96;
+}
+
+.form-control{
+	border-radius:0px;
+}

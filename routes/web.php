@@ -16,22 +16,23 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', 'HomeController@index');
 
+Route::group(['prefix' => 'auth' ], function () {
+	Route::get("login"		, "Auth\LoginController@showLoginForm")->name('login');
+	Route::post("login"		, "Auth\LoginController@login")->name('login');
+	Route::post("logout"	, "Auth\LoginController@logout")->name('logout');
 
-Route::get("auth/login", "Auth\LoginController@showLoginForm")->name('login');
-Route::post("auth/login", "Auth\LoginController@login")->name('login');
-Route::post("auth/logout", "Auth\LoginController@logout")->name('logout');
-
+});
 
 Route::group(['middleware' => ['superadmin'] , 'prefix' => 'auth' ], function () {
-	Route::get("users","UserController@getAllUsers");
-	Route::get("register", "UserController@index");
-	Route::post("register", "UserController@doRegister");
+	Route::get("users"		,	"UserController@getAllUsers"	);
+	Route::get("register"	, 	"UserController@index"		);
+	Route::post("register"	,	"UserController@doRegister"	);
 });
 
 Route::group(['middleware' => ['auth'] , 'prefix' => 'auth' ], function () {
-	Route::get("dashboard",function(){
-		return "dashboard view";
-	});
+	Route::get("profile"			,	"ProfileController@profile"				);
+	Route::get("profile/edit"		,	"ProfileController@profileEdit"			);
+	Route::post("profile/update"	,	"ProfileController@profileUpdate"		);
+	Route::get('home'				, 	'HomeController@index'					);
 });

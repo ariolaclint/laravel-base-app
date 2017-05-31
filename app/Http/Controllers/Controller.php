@@ -10,4 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function trimpostdata($tmpdatas)
+    {
+    	$datas = array();
+
+    	foreach ($tmpdatas as $key => $data) {
+    		$datas[$key] = trim($data);
+    	}
+
+    	return $datas;
+    }
 }

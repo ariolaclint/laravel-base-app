@@ -18,6 +18,7 @@
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
+            'baseURL' => url('/')
         ]) !!};
     </script>
 </head>

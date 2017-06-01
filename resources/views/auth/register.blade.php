@@ -6,12 +6,12 @@
         <div class="row">
             <div class="col-md-12 noPaddingLeftRight">
                 <div class="col-md-3 noPaddingLeftRight">
-                    <h5><span class="glyphicon glyphicon-plus"></span> Add User</h5>
+                   <a class="alineHeight" href="{{ url('auth/users') }}">
+                      <span class="glyphicon glyphicon-user"></span> User Management
+                    </a>
                 </div>
                 <div class="col-md-9 noPaddingLeftRight">
-                    <a class="pull-right alineHeight" href="{{ url('auth/users') }}">
-                      <span class="glyphicon glyphicon-user"></span> Users
-                    </a>
+                     <h5 class="pull-right"><span class="glyphicon glyphicon-plus"></span> Add User</h5>
                 </div>
             </div>
             <div class="col-md-12 noPaddingLeftRight">
@@ -83,10 +83,9 @@
 
                                 <div class="col-md-6">
                                     <select name="role" required class="form-control">
-                                        <option value="R01">Super Admin</option>
-                                        <option value="R02">Church Admin</option>
-                                        <option value="R03">Staff</option>
-                                        <option value="R04">Priest</option>
+                                        @foreach(HelperClass::getAllRoles() as $roleid => $rolename)
+                                                <option value="{{ $roleid }}">{{ $rolename }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('role'))
                                         <span class="help-block">

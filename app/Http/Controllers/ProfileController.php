@@ -47,4 +47,42 @@ class ProfileController extends Controller
 
     	return redirect("auth/profile");
     }
+
+    public function changePassword(Request $request)
+    {
+        $tmpdata = $request->all();
+        $data = $this->trimpostdata($tmpdata);
+
+        $username = Auth::user()->username;
+
+        $rule = array(  
+            'current_password' => 'required|chekckpassword',
+            'password' => 'required|same:password_confirmation|min:6',
+        );
+        
+        Validator::extend('chekckpassword', function ($attribute, $value) 
+        {
+            if (Auth::validate(array('email' => Auth::user()->email, 'password' => $value))){
+                return true;
+            }
+            
+        });
+
+        $messages = array(
+            'current_password.chekckpassword' => 'Current password is incorrect.',
+        );
+
+        $validator = Validator::make($data,$rule,$messages);
+
+        if ($validator->fails())
+        {
+            return ["status"=> 400, "error"=>$validator->messages()];
+        }
+
+        $user = Auth::user();
+        $user->password = bcrypt($data['password']);
+        $user->save();
+
+        return ["status"=> 200 ];
+    }
 }

@@ -95,3 +95,33 @@ table > tbody > tr > td{
 .form-control{
 	border-radius:0px;
 }
+
+.profilepic{
+	padding:5px; 
+	border-radius: 50%;
+	cursor: pointer;
+	width: 120px;
+	height: 120px;
+}
+
+
+#profileContainer{
+	width: 120px;
+}
+
+#labelUpdateprofile{
+	background: rgba(0, 0, 0, 0.6);
+	text-align: center;
+	cursor: pointer;
+	display: none;
+	position: absolute;
+	float: left;
+	width: 118px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 90px;
+}
+#labelUpdateprofilelbl{
+	color:#fff;
+	font-size: 11px
+}

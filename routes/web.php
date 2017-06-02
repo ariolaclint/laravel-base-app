@@ -36,9 +36,11 @@ Route::group(['middleware' => ['superadmin'] , 'prefix' => 'auth' ], function ()
 });
 
 Route::group(['middleware' => ['auth'] , 'prefix' => 'auth' ], function () {
-	Route::get("profile"			,	"ProfileController@profile"				);
-	Route::get("profile/edit"		,	"ProfileController@profileEdit"			);
-	Route::post("profile/update"	,	"ProfileController@profileUpdate"		);
-	Route::post('profile/changepass', 	'ProfileController@changePassword'		);
-	Route::get('home'				, 	'HomeController@index'					);
+	Route::get("profile"				,	"ProfileController@profile"				);
+	Route::get("profile/picture/{path}"	,	"ProfileController@getProfilePic"		);
+	Route::post("profile/picture/update",	"ProfileController@updateProfilePic"	);
+	Route::get("profile/edit"			,	"ProfileController@profileEdit"			);
+	Route::post("profile/update"		,	"ProfileController@profileUpdate"		);
+	Route::post('profile/changepass'	, 	'ProfileController@changePassword'		);
+	Route::get('home'					, 	'HomeController@index'					);
 });

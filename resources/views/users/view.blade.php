@@ -17,10 +17,12 @@
             <div class="col-md-12 noPaddingLeftRight">
                 <div class="panel panel-default">
                     <div class="panel-body paddingTop30">
+                        <div class="col-md-12">
+                                <center> <img height="120" width="120" src="{{ url('auth/profile/picture') }}/{{ $user->profilepic  }}" class="profilepic"  /></center>
+                            </div>
                         <div class="col-md-8 col-md-offset-2">
                             <div class="col-md-6 noPaddingLeftRight"><span>Personal Information</span></div>
                             <div class="col-md-6 noPaddingLeftRight">
-                               
                             </div>
                             <table class="table">
                                 <tbody>

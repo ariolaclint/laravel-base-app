@@ -5,12 +5,47 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Validator;
+use File;
+use Response;
 
 class ProfileController extends Controller
 {
     public function profile()
     {
-    	return view("profile.index");
+        return view("profile.index");
+    }
+
+    public function getProfilePic($pathname)
+    {
+       $path = storage_path('app/public/' . $pathname);
+
+       if (!File::exists($path)) {
+          abort(404);
+       }
+
+       $file = File::get($path);
+       $type = File::mimeType($path);
+
+       $response = Response::make($file, 200);
+       $response->header("Content-Type", $type);
+
+       return $response;
+    }
+
+    public function updateProfilePic(Request $req)
+    {
+        $user = Auth::user();
+
+        $filename = $req->file('profilepicInput')->getClientOriginalName();
+        $user->profilepic = $filename;
+
+        $path = $req->file('profilepicInput')->storeAs(
+            'public', $filename
+        );
+
+        $user->save();
+
+        return redirect ('auth/profile');
     }
 
     public function profileEdit()

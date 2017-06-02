@@ -18,6 +18,28 @@
                 <div class="panel panel-default">
                     <div class="panel-body paddingTop30">
                         <div class="col-md-8 col-md-offset-2">
+                            <center>
+                                <form action="{{ url('auth/profile/picture/update') }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <!-- Image to diplay profile picture -->
+                                    <div id="profileContainer" >
+                                        <div id="labelUpdateprofile" onclick="document.getElementById('profilepicInput').click();">
+                                            <span id="labelUpdateprofilelbl" >
+                                            <span class="glyphicon glyphicon-camera"></span>  Update Picture</span>
+                                        </div>
+                                        <img  src="{{ url('auth/profile/picture') }}/{{ Auth::user()->profilepic  }}" class="profilepic" onclick="document.getElementById('profilepicInput').click();" />
+                                        
+                                    </div>
+                                    
+                                    <!-- File type Input -->
+                                   <input id="profilepicInput" name="profilepicInput" onchange="readURL(this);" type="file" style="display:none;" accept="image/x-png,image/gif,image/jpeg" required />
+
+                                   <!-- Button to save profile -->
+                                   <div id="divbuttonprofile" style="margin-top: 10px;display: none"><button id="btnsaveprofile"  class="btn btn-primary btn-xs">Save</button>
+                                   <button id="btncancelprofile" class="btn btn-default btn-xs" type="button" onclick="location.reload()">Cancel</button>
+                                   </div>
+                                </form>
+                            </center>
                             <div class="col-md-6 noPaddingLeftRight"><span>Personal Information</span></div>
                             <div class="col-md-6 noPaddingLeftRight">
                                

@@ -47,20 +47,54 @@ $(function(){
 
     })
 
-	$.fn.serializeObject = function(form)
-    {
-        var o = {};
-        var a = $("#"+form).serializeArray();
-        $.each(a, function() {
-            if (o[this.name] !== undefined) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
-                }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-        return o;
-    };
+        $(".profilepic").hover(function(){
+            $("#labelUpdateprofile").css("display","block");
+        })
+        
+         $("#labelUpdateprofile").hover(function(){
+            $("#labelUpdateprofile").css("display","block");
+        })
+        
+         $("#labelUpdateprofile").mouseout(function(){
+            $("#labelUpdateprofile").css("display","none");
+        })
+        
+         $(".profilepic").mouseout(function(){
+            $("#labelUpdateprofile").css("display","none");
+        })
+        
+
+  	$.fn.serializeObject = function(form)
+      {
+          var o = {};
+          var a = $("#"+form).serializeArray();
+          $.each(a, function() {
+              if (o[this.name] !== undefined) {
+                  if (!o[this.name].push) {
+                      o[this.name] = [o[this.name]];
+                  }
+                  o[this.name].push(this.value || '');
+              } else {
+                  o[this.name] = this.value || '';
+              }
+          });
+          return o;
+      };
 })
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('.profilepic')
+                .attr('src', e.target.result)
+                .height(110)
+                .width(110)
+
+            $("#divbuttonprofile").css("display","block");
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+  }
